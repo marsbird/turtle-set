@@ -21,7 +21,7 @@ const Board = () => {
   }
 
   return (
-    <div>
+    <div className='game-board'>
       <button
         type='button'
         onClick={(e) => {
@@ -30,7 +30,7 @@ const Board = () => {
       >
         New Game
       </button>
-      <div>{tiles}</div>
+      <div className='tiles-container'>{tiles}</div>
     </div>
   );
 };

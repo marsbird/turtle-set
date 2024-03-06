@@ -2,7 +2,7 @@ import React from 'react';
 
 const Tile = ({ number, pattern, color, shape }) => {
   return (
-    <div>
+    <div className='tile'>
       num: {number}, pat: {pattern}, col: {color}, sha: {shape}
     </div>
   );

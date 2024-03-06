@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import App from './components/App.jsx';
 import store from './store.js';
+import styles from './style.css';
 
 const root = createRoot(document.querySelector('#root'));
 
