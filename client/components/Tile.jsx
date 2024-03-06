@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Tile = ({ number, pattern, color, shape }) => {
+const Tile = ({ _id, number, pattern, color, shape }) => {
   return (
     <div className='tile'>
-      {/* num: {number}, pat: {pattern}, col: {color}, sha: {shape} */}
-      {number}
+      _id: {_id}, num: {number}, pat: {pattern}, col: {color}, sha: {shape},
+      {/* {number} */}
     </div>
   );
 };
