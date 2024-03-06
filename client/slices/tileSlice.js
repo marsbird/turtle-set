@@ -22,6 +22,7 @@ export const tileSlice = createSlice({
     refresh: (state) => {
       state.values.forEach((tile, i) => {
         state.values[i] = {
+          _id: i,
           number: Math.floor(Math.random() * 3),
           pattern: Math.floor(Math.random() * 3),
           color: Math.floor(Math.random() * 3),
