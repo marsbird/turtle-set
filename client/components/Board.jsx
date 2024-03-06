@@ -5,7 +5,7 @@ import Tile from './Tile.jsx';
 
 const Board = () => {
   const values = useSelector((state) => state.tiles.values);
-  const sets = useSelector((state) => state.tiles.sets);
+  // const sets = useSelector((state) => state.tiles.sets);
   const dispatch = useDispatch();
 
   const tiles = [];
