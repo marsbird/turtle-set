@@ -59,9 +59,16 @@ export const tileSlice = createSlice({
       state.userSelection.push(action.payload);
       state.userSelection.sort((a, b) => a - b);
     },
+    removeUserSelection: (state, action) => {
+      const userSelection = state.userSelection.filter(
+        (element) => element != action.payload
+      );
+      return { ...state, userSelection };
+    },
   },
 });
 
-export const { refresh, getSets, addUserSelection } = tileSlice.actions;
+export const { refresh, getSets, addUserSelection, removeUserSelection } =
+  tileSlice.actions;
 
 export default tileSlice.reducer;
