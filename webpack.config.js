@@ -25,4 +25,10 @@ module.exports = {
       template: path.resolve(__dirname, './client/index.html'),
     }),
   ],
+  devServer: {
+    static: {
+      publicPath: '/build',
+      directory: path.resolve(__dirname, './build'),
+    },
+  },
 };
