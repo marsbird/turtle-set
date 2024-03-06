@@ -6,15 +6,18 @@ const Tile = ({ _id, number, pattern, color, shape }) => {
   const dispatch = useDispatch();
   const userSelection = useSelector((state) => state.tiles.userSelection);
 
+  let classes = 'tile';
+  if (userSelection.includes(_id)) {
+    classes += ' selected';
+  }
+
   return (
     <div
-      className='tile'
+      className={classes}
       onClick={(e) => {
         if (userSelection.length < 3 && !userSelection.includes(_id)) {
-          e.target.style.boxShadow = '0 0 1rem black';
           dispatch(addUserSelection(_id));
         } else if (userSelection.includes(_id)) {
-          e.target.style.boxShadow = '';
           dispatch(removeUserSelection(_id));
         }
       }}
