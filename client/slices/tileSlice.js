@@ -3,20 +3,30 @@ import { createSlice } from '@reduxjs/toolkit';
 export const tileSlice = createSlice({
   name: 'tiles',
   initialState: {
-    values: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+    values: [
+      { _id: 0 },
+      { _id: 1 },
+      { _id: 2 },
+      { _id: 3 },
+      { _id: 4 },
+      { _id: 5 },
+      { _id: 6 },
+      { _id: 7 },
+      { _id: 8 },
+      { _id: 9 },
+      { _id: 10 },
+      { _id: 11 },
+    ],
     sets: [],
     userSelection: [],
   },
   reducers: {
     refresh: (state) => {
       state.values.forEach((tile, i) => {
-        state.values[i] = {
-          _id: i,
-          number: Math.floor(Math.random() * 3),
-          pattern: Math.floor(Math.random() * 3),
-          color: Math.floor(Math.random() * 3),
-          shape: Math.floor(Math.random() * 3),
-        };
+        state.values[i].number = Math.floor(Math.random() * 3);
+        state.values[i].pattern = Math.floor(Math.random() * 3);
+        state.values[i].color = Math.floor(Math.random() * 3);
+        state.values[i].shape = Math.floor(Math.random() * 3);
       });
     },
     getSets: (state) => {
