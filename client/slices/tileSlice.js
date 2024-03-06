@@ -49,15 +49,19 @@ export const tileSlice = createSlice({
                 state.values[j].shape != state.values[k].shape &&
                 state.values[k].shape != state.values[i].shape);
             if (isNumberSet && isPatternSet && isColorSet && isShapeSet) {
-              state.sets.push([i, j, k]);
+              state.sets.push([i, j, k].sort((a, b) => a - b));
             }
           }
         }
       }
     },
+    addUserSelection: (state, action) => {
+      state.userSelection.push(action.payload);
+      state.userSelection.sort((a, b) => a - b);
+    },
   },
 });
 
-export const { refresh, getSets } = tileSlice.actions;
+export const { refresh, getSets, addUserSelection } = tileSlice.actions;
 
 export default tileSlice.reducer;
