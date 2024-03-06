@@ -3,20 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 export const tileSlice = createSlice({
   name: 'tiles',
   initialState: {
-    values: [
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-      { number: 0, pattern: 0, color: 0, shape: 0 },
-    ],
+    values: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+    sets: [],
+    userSelection: [],
   },
   reducers: {
     refresh: (state) => {
@@ -30,9 +19,45 @@ export const tileSlice = createSlice({
         };
       });
     },
+    getSets: (state) => {
+      state.sets = [];
+      for (let i = 0; i < state.values.length; i++) {
+        for (let j = i + 1; j < state.values.length; j++) {
+          for (let k = j + 1; k < state.values.length; k++) {
+            const isNumberSet =
+              (state.values[i].number == state.values[j].number &&
+                state.values[j].number == state.values[k].number) ||
+              (state.values[i].number != state.values[j].number &&
+                state.values[j].number != state.values[k].number &&
+                state.values[k].number != state.values[i].number);
+            const isPatternSet =
+              (state.values[i].pattern == state.values[j].pattern &&
+                state.values[j].pattern == state.values[k].pattern) ||
+              (state.values[i].pattern != state.values[j].pattern &&
+                state.values[j].pattern != state.values[k].pattern &&
+                state.values[k].pattern != state.values[i].pattern);
+            const isColorSet =
+              (state.values[i].color == state.values[j].color &&
+                state.values[j].color == state.values[k].color) ||
+              (state.values[i].color != state.values[j].color &&
+                state.values[j].color != state.values[k].color &&
+                state.values[k].color != state.values[i].color);
+            const isShapeSet =
+              (state.values[i].shape == state.values[j].shape &&
+                state.values[j].shape == state.values[k].shape) ||
+              (state.values[i].shape != state.values[j].shape &&
+                state.values[j].shape != state.values[k].shape &&
+                state.values[k].shape != state.values[i].shape);
+            if (isNumberSet && isPatternSet && isColorSet && isShapeSet) {
+              state.sets.push([i, j, k]);
+            }
+          }
+        }
+      }
+    },
   },
 });
 
-export const { refresh } = tileSlice.actions;
+export const { refresh, getSets } = tileSlice.actions;
 
 export default tileSlice.reducer;
