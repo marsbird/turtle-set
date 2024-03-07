@@ -25,13 +25,7 @@ const Board = () => {
   return (
     <div className='game-board'>
       <div>Score: {score}</div>
-      <button
-        type='button'
-        // on click refresh the full board
-        onClick={(e) => {
-          dispatch(refresh());
-        }}
-      >
+      <button type='button' onClick={(e) => dispatch(refresh())}>
         New Game
       </button>
       <div className='tiles-container'>{tiles}</div>
