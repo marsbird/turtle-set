@@ -1,22 +1,22 @@
 .tiles-container {
   display: grid;
   grid-template: auto / repeat(4, 1fr);
-  border: 1px solid black;
-  width: 40vw;
-  height: 30vw;
+  // border: 1px solid black;
+  width: 80vw;
+  height: 60vw;
 }
 
 .tile {
   display: flex;
-  margin: 0.5vw;
+  margin: 1vw;
   align-items: center;
   justify-content: center;
-  font-size: 1vw;
+  font-size: 2vw;
   font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: khaki;
+  background-color: rgb(27, 191, 174);
 }
 
 .selected {
-  box-shadow: 0 0 1rem black;
+  box-shadow: 0 0 1vw black;
 }
