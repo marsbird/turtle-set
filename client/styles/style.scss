@@ -1,9 +1,12 @@
 $primaryColor: rgb(35, 191, 157);
 $secondaryColor: rgb(8, 50, 155);
 
+html {
+  font-family: 'Concert One';
+}
+
 body {
   background-color: khaki;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.5vw;
 }
 
