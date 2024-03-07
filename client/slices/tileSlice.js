@@ -32,6 +32,8 @@ export const tileSlice = createSlice({
       state.userSelection = [];
 
       ids.forEach((i) => {
+        state.values[i] = {};
+        state.values[i]._id = i;
         state.values[i].number = Math.floor(Math.random() * 3);
         state.values[i].pattern = Math.floor(Math.random() * 3);
         state.values[i].color = Math.floor(Math.random() * 3);
