@@ -104,6 +104,17 @@ img {
   img {
     width: 8vw;
   }
+  body h1 {
+    font-size: 2rem;
+  }
+  .game-board h2 {
+    font-size: 1.5rem;
+  }
+  button {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+  }
 }
 
 @media screen and (width > 1000px) {
