@@ -1,5 +1,6 @@
 $lightColor: rgb(228, 240, 255);
 $darkColor: rgb(56, 85, 164);
+$containerWidth: 85vw;
 
 html {
   font-family: 'Concert One';
@@ -69,7 +70,7 @@ button {
 }
 
 img {
-  height: 7vw;
+  width: 5.5vw;
 }
 
 .icon-color-0 {
@@ -90,9 +91,33 @@ img {
 .tiles-container {
   display: grid;
   grid-template: auto / repeat(4, 1fr);
-  width: 95vw;
-  height: 45vw;
+  width: $containerWidth;
+  height: calc($containerWidth / 2);
   gap: 2vw 2vw;
+}
+
+@media screen and (width < 650px) {
+  .tiles-container {
+    grid-template: auto / repeat(3, 1fr);
+    height: calc($containerWidth / 1.2);
+  }
+  img {
+    width: 8vw;
+  }
+}
+
+@media screen and (width > 1000px) {
+  .tiles-container {
+    height: 425px;
+    width: 850px;
+    gap: 20px;
+  }
+  .tile {
+    border-radius: 20px;
+  }
+  img {
+    width: 55px;
+  }
 }
 
 .tile {
@@ -100,7 +125,7 @@ img {
   align-items: center;
   justify-content: center;
   background-color: $lightColor;
-  border-radius: 1rem;
+  border-radius: 2vw;
   box-shadow: 0.2rem 0.2rem 0.5rem 0.1rem $darkColor;
 }
 
