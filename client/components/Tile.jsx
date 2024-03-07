@@ -5,6 +5,7 @@ import {
   removeUserSelection,
   refresh,
   incrementScore,
+  clearSelection,
 } from '../slices/tileSlice.js';
 import turtle from '../img/turtle.png';
 import turtleFill from '../img/turtle-fill.png';
@@ -77,6 +78,8 @@ const Tile = ({ _id, number, pattern, color, shape }) => {
   if (match) {
     dispatch(incrementScore());
     dispatch(refresh(userSelection));
+  } else if (userSelection.length >= 3) {
+    dispatch(clearSelection());
   }
 
   return (
