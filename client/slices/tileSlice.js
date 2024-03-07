@@ -27,6 +27,10 @@ export const tileSlice = createSlice({
     refresh: (state, action) => {
       const ids = action.payload || [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
+      state.match = undefined;
+
+      state.userSelection = [];
+
       ids.forEach((i) => {
         state.values[i].number = Math.floor(Math.random() * 3);
         state.values[i].pattern = Math.floor(Math.random() * 3);

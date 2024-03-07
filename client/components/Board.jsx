@@ -10,7 +10,6 @@ import Tile from './Tile.jsx';
 const Board = () => {
   const values = useSelector((state) => state.tiles.values);
   const score = useSelector((state) => state.tiles.score);
-  const sets = useSelector((state) => state.tiles.sets);
   const userSelection = useSelector((state) => state.tiles.userSelection);
   const dispatch = useDispatch();
 
@@ -28,15 +27,6 @@ const Board = () => {
     );
   }
 
-  const match = sets.some((set) => {
-    // console.log('set', set);
-    return (
-      set[0] == userSelection[0] &&
-      set[1] == userSelection[1] &&
-      set[2] == userSelection[2]
-    );
-  });
-
   return (
     <div className='game-board'>
       <div>Score: {score}</div>
@@ -48,19 +38,6 @@ const Board = () => {
         }}
       >
         New Game
-      </button>
-      <button
-        type='button'
-        // on click refresh the board, populating with new tiles
-        onClick={(e) => {
-          if (match) {
-            dispatch(incrementScore());
-            dispatch(refresh(userSelection));
-          }
-          dispatch(clearSelection());
-        }}
-      >
-        Submit
       </button>
       <div className='tiles-container'>{tiles}</div>
     </div>

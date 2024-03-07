@@ -1,6 +1,11 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addUserSelection, removeUserSelection } from '../slices/tileSlice.js';
+import {
+  addUserSelection,
+  removeUserSelection,
+  refresh,
+  incrementScore,
+} from '../slices/tileSlice.js';
 import turtle from '../img/turtle.png';
 import turtleFill from '../img/turtle-fill.png';
 import turtleEmpty from '../img/turtle-empty.png';
@@ -14,6 +19,7 @@ import fishEmpty from '../img/fish-empty.png';
 const Tile = ({ _id, number, pattern, color, shape }) => {
   const dispatch = useDispatch();
   const userSelection = useSelector((state) => state.tiles.userSelection);
+  const match = useSelector((state) => state.tiles.match);
 
   let classes = 'tile';
   if (userSelection.includes(_id)) {
@@ -68,15 +74,18 @@ const Tile = ({ _id, number, pattern, color, shape }) => {
     icons.push(icon);
   }
 
+  if (match) {
+    dispatch(incrementScore());
+    dispatch(refresh(userSelection));
+  }
+
   return (
     <div
       className={classes}
       onClick={(e) => {
-        if (userSelection.length < 3 && !userSelection.includes(_id)) {
-          dispatch(addUserSelection(_id));
-        } else if (userSelection.includes(_id)) {
-          dispatch(removeUserSelection(_id));
-        }
+        userSelection.includes(_id)
+          ? dispatch(removeUserSelection(_id))
+          : dispatch(addUserSelection(_id));
       }}
     >
       {icons.map((icon, i) => {
