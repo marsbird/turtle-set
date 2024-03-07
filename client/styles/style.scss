@@ -17,12 +17,32 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   h1 {
     font-size: 3rem;
     margin: 1rem;
     text-align: center;
   }
 }
+
+footer {
+  text-align: center;
+  margin: 1rem;
+  // font-family: arial, Helvetica, sans-serif;
+  .marselena {
+    font-size: 0.6rem;
+  }
+  .other {
+    font-size: 0.4rem;
+  }
+  p {
+    margin: 0.2rem;
+  }
+  a {
+    color: inherit;
+  }
+}
+
 .game-board {
   h2 {
     font-size: 2rem;
