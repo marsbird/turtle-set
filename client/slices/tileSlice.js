@@ -19,12 +19,14 @@ export const tileSlice = createSlice({
       state.userSelection = [];
 
       ids.forEach((i) => {
-        state.values[i] = {};
-        state.values[i]._id = i;
-        state.values[i].number = Math.floor(Math.random() * 3);
-        state.values[i].pattern = Math.floor(Math.random() * 3);
-        state.values[i].color = Math.floor(Math.random() * 3);
-        state.values[i].shape = Math.floor(Math.random() * 3);
+        const newCard = {};
+        newCard._id = i;
+        newCard.number = Math.floor(Math.random() * 3);
+        newCard.pattern = Math.floor(Math.random() * 3);
+        newCard.color = Math.floor(Math.random() * 3);
+        newCard.shape = Math.floor(Math.random() * 3);
+
+        state.values[i] = newCard;
       });
 
       state.sets = [];
