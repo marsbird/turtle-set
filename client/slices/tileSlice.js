@@ -28,6 +28,7 @@ export const tileSlice = createSlice({
         state.values[i].color = Math.floor(Math.random() * 3);
         state.values[i].shape = Math.floor(Math.random() * 3);
       });
+      state.userSelection = [];
     },
     getSets: (state) => {
       state.sets = [];
