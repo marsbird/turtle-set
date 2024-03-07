@@ -1,16 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  refresh,
-  incrementScore,
-  clearSelection,
-} from '../slices/tileSlice.js';
+import { refresh } from '../slices/tileSlice.js';
 import Tile from './Tile.jsx';
 
 const Board = () => {
   const values = useSelector((state) => state.tiles.values);
   const score = useSelector((state) => state.tiles.score);
-  const userSelection = useSelector((state) => state.tiles.userSelection);
   const dispatch = useDispatch();
 
   const tiles = [];
