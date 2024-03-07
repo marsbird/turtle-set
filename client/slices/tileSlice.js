@@ -13,10 +13,10 @@ export const tileSlice = createSlice({
   reducers: {
     refresh: (state, action) => {
       const ids = action.payload || [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-      const match = undefined;
-      const userSelection = [];
-      const values = JSON.parse(JSON.stringify(state.values));
-      const sets = [];
+
+      state.match = undefined;
+
+      state.userSelection = [];
 
       ids.forEach((i) => {
         const newCard = {};
@@ -25,46 +25,47 @@ export const tileSlice = createSlice({
         newCard.pattern = Math.floor(Math.random() * 3);
         newCard.color = Math.floor(Math.random() * 3);
         newCard.shape = Math.floor(Math.random() * 3);
-        values[i] = newCard;
+
+        state.values[i] = newCard;
       });
 
-      for (let i = 0; i < values.length; i++) {
-        for (let j = i + 1; j < values.length; j++) {
-          for (let k = j + 1; k < values.length; k++) {
+      state.sets = [];
+      for (let i = 0; i < state.values.length; i++) {
+        for (let j = i + 1; j < state.values.length; j++) {
+          for (let k = j + 1; k < state.values.length; k++) {
             const isNumberSet =
-              (values[i].number == values[j].number &&
-                values[j].number == values[k].number) ||
-              (values[i].number != values[j].number &&
-                values[j].number != values[k].number &&
-                values[k].number != values[i].number);
+              (state.values[i].number == state.values[j].number &&
+                state.values[j].number == state.values[k].number) ||
+              (state.values[i].number != state.values[j].number &&
+                state.values[j].number != state.values[k].number &&
+                state.values[k].number != state.values[i].number);
             const isPatternSet =
-              (values[i].pattern == values[j].pattern &&
-                values[j].pattern == values[k].pattern) ||
-              (values[i].pattern != values[j].pattern &&
-                values[j].pattern != values[k].pattern &&
-                values[k].pattern != values[i].pattern);
+              (state.values[i].pattern == state.values[j].pattern &&
+                state.values[j].pattern == state.values[k].pattern) ||
+              (state.values[i].pattern != state.values[j].pattern &&
+                state.values[j].pattern != state.values[k].pattern &&
+                state.values[k].pattern != state.values[i].pattern);
             const isColorSet =
-              (values[i].color == values[j].color &&
-                values[j].color == values[k].color) ||
-              (values[i].color != values[j].color &&
-                values[j].color != values[k].color &&
-                values[k].color != values[i].color);
+              (state.values[i].color == state.values[j].color &&
+                state.values[j].color == state.values[k].color) ||
+              (state.values[i].color != state.values[j].color &&
+                state.values[j].color != state.values[k].color &&
+                state.values[k].color != state.values[i].color);
             const isShapeSet =
-              (values[i].shape == values[j].shape &&
-                values[j].shape == values[k].shape) ||
-              (values[i].shape != values[j].shape &&
-                values[j].shape != values[k].shape &&
-                values[k].shape != values[i].shape);
+              (state.values[i].shape == state.values[j].shape &&
+                state.values[j].shape == state.values[k].shape) ||
+              (state.values[i].shape != state.values[j].shape &&
+                state.values[j].shape != state.values[k].shape &&
+                state.values[k].shape != state.values[i].shape);
             if (isNumberSet && isPatternSet && isColorSet && isShapeSet) {
-              sets.push([i, j, k].sort((a, b) => a - b));
+              state.sets.push([i, j, k].sort((a, b) => a - b));
             }
           }
         }
       }
-      return { ...state, match, userSelection, values, sets };
     },
     addUserSelection: (state, action) => {
-      const userSelection = JSON.parse(JSON.stringify(state.userSelection));
+      const userSelection = structuredClone(state.userSelection);
       userSelection.push(action.payload);
       userSelection.sort((a, b) => a - b);
 
