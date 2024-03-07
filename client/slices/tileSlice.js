@@ -19,6 +19,7 @@ export const tileSlice = createSlice({
     ],
     sets: [],
     userSelection: [],
+    match: undefined,
     score: 0,
     highScore: 0,
   },
@@ -71,12 +72,26 @@ export const tileSlice = createSlice({
     addUserSelection: (state, action) => {
       state.userSelection.push(action.payload);
       state.userSelection.sort((a, b) => a - b);
+      state.match = state.sets.some((set) => {
+        return (
+          set[0] == state.userSelection[0] &&
+          set[1] == state.userSelection[1] &&
+          set[2] == state.userSelection[2]
+        );
+      });
     },
     removeUserSelection: (state, action) => {
       const userSelection = state.userSelection.filter(
         (element) => element != action.payload
       );
-      return { ...state, userSelection };
+      const match = state.sets.some((set) => {
+        return (
+          set[0] == userSelection[0] &&
+          set[1] == userSelection[1] &&
+          set[2] == userSelection[2]
+        );
+      });
+      return { ...state, userSelection, match };
     },
     incrementScore: (state) => {
       state.score++;
