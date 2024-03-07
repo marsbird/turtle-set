@@ -1,12 +1,17 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { refresh, getSets, submit } from '../slices/tileSlice.js';
+import {
+  refresh,
+  incrementScore,
+  clearSelection,
+} from '../slices/tileSlice.js';
 import Tile from './Tile.jsx';
 
 const Board = () => {
   const values = useSelector((state) => state.tiles.values);
   const score = useSelector((state) => state.tiles.score);
-  // const sets = useSelector((state) => state.tiles.sets);
+  const sets = useSelector((state) => state.tiles.sets);
+  const userSelection = useSelector((state) => state.tiles.userSelection);
   const dispatch = useDispatch();
 
   const tiles = [];
@@ -23,24 +28,36 @@ const Board = () => {
     );
   }
 
+  const match = sets.some((set) => {
+    // console.log('set', set);
+    return (
+      set[0] == userSelection[0] &&
+      set[1] == userSelection[1] &&
+      set[2] == userSelection[2]
+    );
+  });
+
   return (
     <div className='game-board'>
       <div>Score: {score}</div>
       <button
         type='button'
-        // on click refresh the board, populating with new tiles and get all possible sets
+        // on click refresh the full board
         onClick={(e) => {
           dispatch(refresh());
-          dispatch(getSets());
         }}
       >
         New Game
       </button>
       <button
         type='button'
-        // on click refresh the board, populating with new tiles and get all possible sets
+        // on click refresh the board, populating with new tiles
         onClick={(e) => {
-          dispatch(submit());
+          if (match) {
+            dispatch(incrementScore());
+            dispatch(refresh(userSelection));
+          }
+          dispatch(clearSelection());
         }}
       >
         Submit

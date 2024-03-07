@@ -23,17 +23,16 @@ export const tileSlice = createSlice({
     highScore: 0,
   },
   reducers: {
-    refresh: (state) => {
-      state.values.forEach((tile, i) => {
+    refresh: (state, action) => {
+      const ids = action.payload || [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+      ids.forEach((i) => {
         state.values[i].number = Math.floor(Math.random() * 3);
         state.values[i].pattern = Math.floor(Math.random() * 3);
         state.values[i].color = Math.floor(Math.random() * 3);
         state.values[i].shape = Math.floor(Math.random() * 3);
       });
-      state.userSelection = [];
-      state.score = 0;
-    },
-    getSets: (state) => {
+
       state.sets = [];
       for (let i = 0; i < state.values.length; i++) {
         for (let j = i + 1; j < state.values.length; j++) {
@@ -79,22 +78,10 @@ export const tileSlice = createSlice({
       );
       return { ...state, userSelection };
     },
-    submit: (state) => {
-      // check for match
-      const match = state.sets.some((set) => {
-        return (
-          set[0] == state.userSelection[0] &&
-          set[1] == state.userSelection[1] &&
-          set[2] == state.userSelection[2]
-        );
-      });
-      // if there's a match, increment the score and replace the selected tiles
-      if (match) {
-        state.score++;
-      } else {
-        console.log('try again');
-      }
-      // reset the selection
+    incrementScore: (state) => {
+      state.score++;
+    },
+    clearSelection: (state) => {
       state.userSelection = [];
     },
   },
@@ -102,10 +89,10 @@ export const tileSlice = createSlice({
 
 export const {
   refresh,
-  getSets,
   addUserSelection,
   removeUserSelection,
-  submit,
+  incrementScore,
+  clearSelection,
 } = tileSlice.actions;
 
 export default tileSlice.reducer;
