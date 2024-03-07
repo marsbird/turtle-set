@@ -1,13 +1,27 @@
-$primaryColor: rgb(35, 191, 157);
-$secondaryColor: rgb(8, 50, 155);
+$lightColor: rgb(228, 240, 255);
+$darkColor: rgb(56, 85, 164);
 
 html {
   font-family: 'Concert One';
+  font-size: 24px;
+  color: $lightColor;
+  text-shadow: 0 0 2rem black, 0 0 0.2rem $darkColor;
+  height: 100%;
+  background-image: linear-gradient($darkColor, $lightColor),
+    url('https://cdn.pixabay.com/photo/2014/03/04/19/51/dark-279694_1280.png');
+  background-blend-mode: lighten;
 }
 
 body {
-  background-color: khaki;
-  font-size: 1.5vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    font-size: 3rem;
+    margin: 1rem;
+    text-align: center;
+  }
 }
 
 img {
@@ -32,23 +46,20 @@ img {
 .tiles-container {
   display: grid;
   grid-template: auto / repeat(4, 1fr);
-  // border: 1px solid black;
   width: 95vw;
   height: 45vw;
+  gap: 1rem 1rem;
 }
 
 .tile {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  margin: 0.6vw;
-  background-color: white;
+  background-color: $lightColor;
   border-radius: 10%;
+  box-shadow: 0.2rem 0.2rem 0.5rem 0.1rem $darkColor;
 }
 
 .selected {
-  // background-color: darken($primaryColor, 5%);
-  box-shadow: 0 0 2vw darken($primaryColor, 30%);
-  font-size: 1.8vw;
+  filter: brightness(70%);
 }
