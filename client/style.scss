@@ -7,6 +7,22 @@ body {
   font-size: 1.5vw;
 }
 
+img {
+  height: 3vw;
+}
+
+.icon-color-0 {
+  filter: invert(100%);
+}
+
+.icon-color-1 {
+  filter: invert(50%);
+}
+
+.icon-color-2 {
+  filter: invert(0%);
+}
+
 .tiles-container {
   display: grid;
   grid-template: auto / repeat(4, 1fr);
