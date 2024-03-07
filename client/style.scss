@@ -1,33 +1,38 @@
 $primaryColor: rgb(35, 191, 157);
 $secondaryColor: rgb(8, 50, 155);
 
+$otherColor: hsl(180, 100%, 32%);
+
 body {
-  // background-color: $secondaryColor;
+  background-color: khaki;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.5vw;
 }
 
 img {
-  height: 4vw;
+  height: 7vw;
 }
 
 .icon-color-0 {
-  filter: invert(100%);
+  filter: invert(27%) sepia(93%) saturate(7493%) hue-rotate(327deg)
+    brightness(99%) contrast(109%);
 }
 
 .icon-color-1 {
-  filter: invert(50%);
+  filter: invert(39%) sepia(87%) saturate(1164%) hue-rotate(201deg)
+    brightness(100%) contrast(104%);
 }
 
 .icon-color-2 {
-  filter: invert(0%);
+  filter: invert(86%) sepia(23%) saturate(6168%) hue-rotate(351deg)
+    brightness(103%) contrast(101%);
 }
 
 .tiles-container {
   display: grid;
   grid-template: auto / repeat(4, 1fr);
   // border: 1px solid black;
-  width: 60vw;
+  width: 95vw;
   height: 45vw;
 }
 
@@ -37,7 +42,7 @@ img {
   justify-content: center;
   font-weight: bold;
   margin: 0.6vw;
-  background-color: $primaryColor;
+  background-color: white;
   border-radius: 10%;
 }
 
