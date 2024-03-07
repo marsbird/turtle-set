@@ -1,3 +1,12 @@
+$primaryColor: rgb(35, 191, 157);
+$secondaryColor: rgb(8, 50, 155);
+
+body {
+  // background-color: $secondaryColor;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2vw;
+}
+
 .tiles-container {
   display: grid;
   grid-template: auto / repeat(4, 1fr);
@@ -8,15 +17,16 @@
 
 .tile {
   display: flex;
-  margin: 1vw;
   align-items: center;
   justify-content: center;
-  font-size: 2vw;
   font-weight: bold;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: rgb(27, 191, 174);
+  margin: 1vw;
+  background-color: $primaryColor;
+  border-radius: 10%;
 }
 
 .selected {
-  box-shadow: 0 0 1vw black;
+  // background-color: darken($primaryColor, 5%);
+  box-shadow: 0 0 3vw darken($primaryColor, 30%);
+  font-size: 2.1vw;
 }
