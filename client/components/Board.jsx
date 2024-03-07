@@ -24,9 +24,9 @@ const Board = () => {
 
   return (
     <div className='game-board'>
-      <div>Score: {score}</div>
+      <h2>Score: {score}</h2>
       <button type='button' onClick={(e) => dispatch(refresh())}>
-        New Game
+        NEW GAME
       </button>
       <div className='tiles-container'>{tiles}</div>
     </div>
