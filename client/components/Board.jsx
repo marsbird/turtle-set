@@ -9,7 +9,7 @@ const Board = () => {
   const dispatch = useDispatch();
 
   const tiles = [];
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < values.length; i++) {
     tiles.push(
       <Tile
         key={i}
