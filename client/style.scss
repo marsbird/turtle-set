@@ -4,15 +4,15 @@ $secondaryColor: rgb(8, 50, 155);
 body {
   // background-color: $secondaryColor;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 
 .tiles-container {
   display: grid;
   grid-template: auto / repeat(4, 1fr);
   // border: 1px solid black;
-  width: 80vw;
-  height: 60vw;
+  width: 60vw;
+  height: 45vw;
 }
 
 .tile {
@@ -20,13 +20,13 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  margin: 1vw;
+  margin: 0.6vw;
   background-color: $primaryColor;
   border-radius: 10%;
 }
 
 .selected {
   // background-color: darken($primaryColor, 5%);
-  box-shadow: 0 0 3vw darken($primaryColor, 30%);
-  font-size: 2.1vw;
+  box-shadow: 0 0 2vw darken($primaryColor, 30%);
+  font-size: 1.8vw;
 }
