@@ -65,20 +65,25 @@ export const tileSlice = createSlice({
       }
     },
     addUserSelection: (state, action) => {
-      state.userSelection.push(action.payload);
-      state.userSelection.sort((a, b) => a - b);
-      state.match = state.sets.some((set) => {
+      const userSelection = structuredClone(state.userSelection);
+      userSelection.push(action.payload);
+      userSelection.sort((a, b) => a - b);
+
+      const match = state.sets.some((set) => {
         return (
           set[0] == state.userSelection[0] &&
           set[1] == state.userSelection[1] &&
           set[2] == state.userSelection[2]
         );
       });
+
+      return { ...state, userSelection, match };
     },
     removeUserSelection: (state, action) => {
       const userSelection = state.userSelection.filter(
         (element) => element != action.payload
       );
+
       const match = state.sets.some((set) => {
         return (
           set[0] == userSelection[0] &&
@@ -86,13 +91,18 @@ export const tileSlice = createSlice({
           set[2] == userSelection[2]
         );
       });
+
       return { ...state, userSelection, match };
     },
     incrementScore: (state) => {
-      state.score++;
+      const score = state.score + 1;
+
+      return { ...state, score };
     },
     clearSelection: (state) => {
-      state.userSelection = [];
+      const userSelection = [];
+
+      return { ...state, userSelection };
     },
   },
 });
