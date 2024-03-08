@@ -70,9 +70,9 @@ export const tileSlice = createSlice({
 
       const match = state.sets.some((set) => {
         return (
-          set[0] == state.userSelection[0] &&
-          set[1] == state.userSelection[1] &&
-          set[2] == state.userSelection[2]
+          set[0] == userSelection[0] &&
+          set[1] == userSelection[1] &&
+          set[2] == userSelection[2]
         );
       });
 
