@@ -9,22 +9,114 @@ export const tileSlice = createSlice({
     match: undefined,
     score: 0,
     highScore: 0,
+    deck: [
+      { number: 0, pattern: 0, color: 0, shape: 0 },
+      { number: 0, pattern: 0, color: 0, shape: 1 },
+      { number: 0, pattern: 0, color: 0, shape: 2 },
+      { number: 0, pattern: 0, color: 1, shape: 0 },
+      { number: 0, pattern: 0, color: 1, shape: 1 },
+      { number: 0, pattern: 0, color: 1, shape: 2 },
+      { number: 0, pattern: 0, color: 2, shape: 0 },
+      { number: 0, pattern: 0, color: 2, shape: 1 },
+      { number: 0, pattern: 0, color: 2, shape: 2 },
+      { number: 0, pattern: 1, color: 0, shape: 0 },
+      { number: 0, pattern: 1, color: 0, shape: 1 },
+      { number: 0, pattern: 1, color: 0, shape: 2 },
+      { number: 0, pattern: 1, color: 1, shape: 0 },
+      { number: 0, pattern: 1, color: 1, shape: 1 },
+      { number: 0, pattern: 1, color: 1, shape: 2 },
+      { number: 0, pattern: 1, color: 2, shape: 0 },
+      { number: 0, pattern: 1, color: 2, shape: 1 },
+      { number: 0, pattern: 1, color: 2, shape: 2 },
+      { number: 0, pattern: 2, color: 0, shape: 0 },
+      { number: 0, pattern: 2, color: 0, shape: 1 },
+      { number: 0, pattern: 2, color: 0, shape: 2 },
+      { number: 0, pattern: 2, color: 1, shape: 0 },
+      { number: 0, pattern: 2, color: 1, shape: 1 },
+      { number: 0, pattern: 2, color: 1, shape: 2 },
+      { number: 0, pattern: 2, color: 2, shape: 0 },
+      { number: 0, pattern: 2, color: 2, shape: 1 },
+      { number: 0, pattern: 2, color: 2, shape: 2 },
+      { number: 1, pattern: 0, color: 0, shape: 0 },
+      { number: 1, pattern: 0, color: 0, shape: 1 },
+      { number: 1, pattern: 0, color: 0, shape: 2 },
+      { number: 1, pattern: 0, color: 1, shape: 0 },
+      { number: 1, pattern: 0, color: 1, shape: 1 },
+      { number: 1, pattern: 0, color: 1, shape: 2 },
+      { number: 1, pattern: 0, color: 2, shape: 0 },
+      { number: 1, pattern: 0, color: 2, shape: 1 },
+      { number: 1, pattern: 0, color: 2, shape: 2 },
+      { number: 1, pattern: 1, color: 0, shape: 0 },
+      { number: 1, pattern: 1, color: 0, shape: 1 },
+      { number: 1, pattern: 1, color: 0, shape: 2 },
+      { number: 1, pattern: 1, color: 1, shape: 0 },
+      { number: 1, pattern: 1, color: 1, shape: 1 },
+      { number: 1, pattern: 1, color: 1, shape: 2 },
+      { number: 1, pattern: 1, color: 2, shape: 0 },
+      { number: 1, pattern: 1, color: 2, shape: 1 },
+      { number: 1, pattern: 1, color: 2, shape: 2 },
+      { number: 1, pattern: 2, color: 0, shape: 0 },
+      { number: 1, pattern: 2, color: 0, shape: 1 },
+      { number: 1, pattern: 2, color: 0, shape: 2 },
+      { number: 1, pattern: 2, color: 1, shape: 0 },
+      { number: 1, pattern: 2, color: 1, shape: 1 },
+      { number: 1, pattern: 2, color: 1, shape: 2 },
+      { number: 1, pattern: 2, color: 2, shape: 0 },
+      { number: 1, pattern: 2, color: 2, shape: 1 },
+      { number: 1, pattern: 2, color: 2, shape: 2 },
+      { number: 2, pattern: 0, color: 0, shape: 0 },
+      { number: 2, pattern: 0, color: 0, shape: 1 },
+      { number: 2, pattern: 0, color: 0, shape: 2 },
+      { number: 2, pattern: 0, color: 1, shape: 0 },
+      { number: 2, pattern: 0, color: 1, shape: 1 },
+      { number: 2, pattern: 0, color: 1, shape: 2 },
+      { number: 2, pattern: 0, color: 2, shape: 0 },
+      { number: 2, pattern: 0, color: 2, shape: 1 },
+      { number: 2, pattern: 0, color: 2, shape: 2 },
+      { number: 2, pattern: 1, color: 0, shape: 0 },
+      { number: 2, pattern: 1, color: 0, shape: 1 },
+      { number: 2, pattern: 1, color: 0, shape: 2 },
+      { number: 2, pattern: 1, color: 1, shape: 0 },
+      { number: 2, pattern: 1, color: 1, shape: 1 },
+      { number: 2, pattern: 1, color: 1, shape: 2 },
+      { number: 2, pattern: 1, color: 2, shape: 0 },
+      { number: 2, pattern: 1, color: 2, shape: 1 },
+      { number: 2, pattern: 1, color: 2, shape: 2 },
+      { number: 2, pattern: 2, color: 0, shape: 0 },
+      { number: 2, pattern: 2, color: 0, shape: 1 },
+      { number: 2, pattern: 2, color: 0, shape: 2 },
+      { number: 2, pattern: 2, color: 1, shape: 0 },
+      { number: 2, pattern: 2, color: 1, shape: 1 },
+      { number: 2, pattern: 2, color: 1, shape: 2 },
+      { number: 2, pattern: 2, color: 2, shape: 0 },
+      { number: 2, pattern: 2, color: 2, shape: 1 },
+      { number: 2, pattern: 2, color: 2, shape: 2 },
+    ],
   },
   reducers: {
     refresh: (state, action) => {
+      console.log('---');
       const ids = action.payload || [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
       const match = undefined;
       const userSelection = [];
       const values = JSON.parse(JSON.stringify(state.values));
+      const deck = JSON.parse(JSON.stringify(state.deck));
       const sets = [];
 
       ids.forEach((i) => {
-        const newCard = {};
+        // choose random index from deck
+        const drawCardIndex = Math.floor(Math.random() * deck.length);
+        // draw card from the deck
+        const newCard = deck.splice(drawCardIndex, 1)[0];
+        // give the new card an id based on its place on the board
         newCard._id = i;
-        newCard.number = Math.floor(Math.random() * 3);
-        newCard.pattern = Math.floor(Math.random() * 3);
-        newCard.color = Math.floor(Math.random() * 3);
-        newCard.shape = Math.floor(Math.random() * 3);
+        // make a copy of the card currently at this index on the board, adding it back to the deck
+        if (values[i] != undefined) {
+          const currentCard = structuredClone(values[i]);
+          delete currentCard._id;
+          deck.push(currentCard);
+        }
+        // place the new card on the board
         values[i] = newCard;
       });
 
@@ -61,7 +153,7 @@ export const tileSlice = createSlice({
           }
         }
       }
-      return { ...state, match, userSelection, values, sets };
+      return { ...state, match, userSelection, values, sets, deck };
     },
     addUserSelection: (state, action) => {
       const userSelection = JSON.parse(JSON.stringify(state.userSelection));
