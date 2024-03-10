@@ -10,7 +10,7 @@ import fishFill from '../img/fish-fill.png';
 import fishEmpty from '../img/fish-empty.png';
 
 const Instructions = () => {
-  return <div id='instructions-container'></div>;
+  return <div id='instructions-container'>Instructions!</div>;
 };
 
 export default Instructions;
