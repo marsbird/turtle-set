@@ -1,11 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { refresh } from '../slices/tileSlice.js';
+import { startGame } from '../slices/appSlice.js';
 import Tile from './Tile.jsx';
+import Instructions from './Instructions.jsx';
 
 const Board = () => {
   const values = useSelector((state) => state.tiles.values);
   const score = useSelector((state) => state.tiles.score);
+  const gameStarted = useSelector((state) => state.app.gameStarted);
   const dispatch = useDispatch();
 
   const tiles = [];
@@ -25,10 +28,20 @@ const Board = () => {
   return (
     <div className='game-board'>
       <h2>Score: {score}</h2>
-      <button type='button' onClick={(e) => dispatch(refresh())}>
+      <button
+        type='button'
+        onClick={(e) => {
+          dispatch(refresh());
+          dispatch(startGame());
+        }}
+      >
         NEW GAME
       </button>
-      <div className='tiles-container'>{tiles}</div>
+      {gameStarted ? (
+        <div className='tiles-container'>{tiles}</div>
+      ) : (
+        <Instructions />
+      )}
     </div>
   );
 };
