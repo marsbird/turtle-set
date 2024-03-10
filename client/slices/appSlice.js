@@ -1,7 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const appSlice = {};
+export const appSlice = {
+  name: 'app',
+  initialState: {
+    gameStarted: false,
+  },
+  reducers: {
+    startGame: (state) => {
+      const gameStarted = true;
+      return { ...state, gameStarted };
+    },
+  },
+};
 
-export const {} = appSlice.actions;
+export const { gameStarted } = appSlice.actions;
 
 export default appSlice.reducer;
