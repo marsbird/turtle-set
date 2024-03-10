@@ -13,6 +13,6 @@ export const appSlice = createSlice({
   },
 });
 
-export const { gameStarted } = appSlice.actions;
+export const { startGame } = appSlice.actions;
 
 export default appSlice.reducer;
